@@ -5,8 +5,39 @@
     "_generator": {
       "name": "bicep",
       "version": "0.46.1.21595",
-      "templateHash": "9483363439713304492"
+      "templateHash": "4668599724336118104"
     }
   },
-  "resources": []
+  "parameters": {
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Azure Storage Account"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Azure deployment location"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2023-05-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "Hot",
+        "allowBlobPublicAccess": false,
+        "minimumTlsVersion": "TLS1_2"
+      }
+    }
+  ]
 }
