@@ -1,7 +1,7 @@
 
 using './main.bicep'
 // Key Vault names must be globally unique.
-param keyVaultName = 'kvtd20260828'
+param keyVaultName = 'kvtd2026082sonu'
 // Managed Identity name
 param identityName = 'kv-demo-identity'
 // Azure location
